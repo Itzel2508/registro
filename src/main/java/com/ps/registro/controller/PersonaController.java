@@ -67,9 +67,16 @@ public class PersonaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Persona> borrar(@PathVariable("id") Long id) {
-        Persona persona = new Persona();
-        persona.setId(id);
-        return ResponseEntity.ok(persona);
+        try {
+            Persona resultado=  iPersonaService.borrar(id);
+
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(resultado);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 }

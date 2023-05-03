@@ -90,7 +90,7 @@ public class PersonaService implements IPersonaService {
 
     @Override
     public Persona borrar(long id) throws Exception {
-        return null;
+        return personaRepository.borrar(id);
     }
 
 }
