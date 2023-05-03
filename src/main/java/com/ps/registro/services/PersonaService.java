@@ -49,17 +49,43 @@ public class PersonaService implements IPersonaService {
         if ( id <= 1){
             throw new Exception("El id enviado no es valido");
         }
-        return personaRepository.getById(id);
+
+
+        return personaRepository.getOne(id);
 
     }
 
 
-
-
-
     @Override
     public Persona actualizar(Persona persona) throws Exception {
-        return null;
+
+        Persona resultado=consultar(persona.getId());
+
+
+        if (persona.getApellidos() == null && persona.getApellidos().equals("")) {
+            resultado.setApellidos(persona.getApellidos());
+        }
+        if (persona.getIdentificacion() == null && persona.getIdentificacion().equals("")) {
+            resultado.setIdentificacion(persona.getIdentificacion());
+        }
+        if (persona.getNombres() == null && persona.getNombres().equals("")) {
+            resultado.setNombres(persona.getNombres());
+        }
+        if (persona.getFechaNacimiento() == null && persona.getFechaNacimiento().equals("")) {
+            resultado.setFechaNacimiento(persona.getFechaNacimiento());
+        }
+        if (persona.getTelefono() == null && persona.getTelefono().equals("")) {
+            resultado.setTelefono(persona.getTelefono());
+        }
+        if (persona.getCorreo() == null && persona.getCorreo().equals("")) {
+            resultado.setCorreo(persona.getCorreo());
+        }
+
+
+
+
+        return personaRepository.save(persona);
+
     }
 
     @Override

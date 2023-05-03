@@ -52,8 +52,17 @@ public class PersonaController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<Persona> actualizar(@RequestBody Persona persona) {
-        return ResponseEntity.ok(persona);
+    public ResponseEntity<?> actualizar(@RequestBody Persona persona) {
+        try {
+            Persona resultado=  iPersonaService.actualizar(persona);
+
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(resultado);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @DeleteMapping("/{id}")
