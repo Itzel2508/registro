@@ -34,7 +34,7 @@ public class PersonaService implements IPersonaService {
             throw new Exception("El usuario no tiene telefono");
         }
         if (persona.getCorreo() == null || persona.getIdentificacion().equals("")) {
-            throw new Exception("El usuario no tiene correo");
+            throw new Exception("El usuario no tiene identificacion");
         }
 
 
@@ -42,6 +42,21 @@ public class PersonaService implements IPersonaService {
 
         return personaRepository.save(persona);
 
+    }
+
+    @Override
+    public Persona consultar(long id) throws Exception {
+        return null;
+    }
+
+    @Override
+    public Persona actualizar(Persona persona) throws Exception {
+        return null;
+    }
+
+    @Override
+    public Persona borrar(long id) throws Exception {
+        return null;
     }
 
 }

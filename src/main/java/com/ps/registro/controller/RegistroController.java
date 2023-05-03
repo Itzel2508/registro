@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class RegistroController {
 
     @GetMapping("/{id}")
-    public ResponseEntity<Registro> consultar(@PathVariable("id") int id) {
+    public ResponseEntity<Registro> consultar(@PathVariable("id") long id) {
         Registro registro = new Registro();
         registro.setId(id);
         return ResponseEntity.ok(registro);
@@ -27,7 +27,7 @@ public class RegistroController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Registro> borrar(@PathVariable("id") int id) {
+    public ResponseEntity<Registro> borrar(@PathVariable("id") long id) {
         Registro registro = new Registro();
         registro.setId(id);
         return ResponseEntity.ok(registro);

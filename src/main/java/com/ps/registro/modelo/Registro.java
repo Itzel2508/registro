@@ -12,7 +12,7 @@ public class Registro {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name="registro", nullable=false)
     private Date registro;
