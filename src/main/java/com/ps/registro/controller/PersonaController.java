@@ -22,17 +22,25 @@ public class PersonaController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Persona> consultar(@PathVariable("id") Long id) {
-        Persona persona = new Persona();
-        persona.setId(id);
-        return ResponseEntity.ok(persona);
+    public ResponseEntity<?> consultar(@PathVariable("id") Long id) {
+        try {
+            Persona resultado=  iPersonaService.consultar(id);
+
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(resultado);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
+
     }
 
     @PostMapping("/")
     public ResponseEntity<?> guardar(@RequestBody Persona persona) {
         try {
             Persona resultado=  iPersonaService.guardar(persona);
-            logger.info(resultado+"");
+
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body(resultado);

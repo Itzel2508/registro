@@ -22,7 +22,7 @@ public class Persona {
     @Column(name="apellidos", nullable=false, length=100)
     private String apellidos;
 
-    @Column(name="fechaNacimiento", nullable=false)
+    @Column(name="fecha_nacimiento", nullable=false)
     private Date fechaNacimiento;
 
     @Column(name="telefono", length=20)

@@ -46,8 +46,16 @@ public class PersonaService implements IPersonaService {
 
     @Override
     public Persona consultar(long id) throws Exception {
-        return null;
+        if ( id <= 1){
+            throw new Exception("El id enviado no es valido");
+        }
+        return personaRepository.getById(id);
+
     }
+
+
+
+
 
     @Override
     public Persona actualizar(Persona persona) throws Exception {
