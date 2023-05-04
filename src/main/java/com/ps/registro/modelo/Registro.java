@@ -1,5 +1,6 @@
 package com.ps.registro.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "Registro")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Registro {
 
     @Id
